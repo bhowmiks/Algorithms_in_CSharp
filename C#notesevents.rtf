@@ -1,0 +1,249 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Birka;}{\f2\fnil\fcharset0 Birka-Italic;}{\f3\fscript\fcharset0 TheSansMonoCd-W5Regular;}{\f4\fscript\fcharset0 TheSansMonoCd-W7Bold;}{\f5\fscript\fcharset0 MyriadPro-SemiboldCond;}{\f6\fscript\fcharset0 TheSansMonoCd-W5RegularItalic;}{\f7\fnil Consolas;}{\f8\fnil\fcharset0 Consolas;}{\f9\fnil\fcharset0 Palatino-Roman;}{\f10\fnil\fcharset0 Palatino-Bold;}{\f11\fnil\fcharset0 CourierNewPSMT;}}
+{\colortbl ;\red0\green77\blue187;\red155\green0\blue211;\red0\green176\blue80;\red0\green0\blue255;\red43\green145\blue175;\red163\green21\blue21;\red100\green107\blue134;}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\qc\cf1\lang9\ul\f0\fs36 C# notes : \b Delegates\par
+\cf2\ulnone\b0\fs16 (Best when opened in\fs18  wordpad\fs16 )\cf1\ul\b\fs36\par
+\cf0\fs32\par
+\pard\ulnone\b0\f1\fs19 A delegatevariable is assigned a method \i\f2 dynamically\i0\f1 . This is useful for writing plugin\par
+methods. In this example, we have a utility method named \f3\fs17 Transform \f1\fs19 that applies\par
+a transform to each element in an integer array. The \f3\fs17 Transform \f1\fs19 method has a delegate\par
+parameter, for specifying a plug-in transform.\par
+\par
+\par
+\par
+\pard\sl360\slmult1\f3\fs20 public delegate int Transformer (int x); \tab\tab\cf3 // creating a delegate \cf0\par
+class Util\par
+\{\par
+public static void Transform (int[] values, \b\f4 Transformer t\b0\f3 ) \cf3 // create a delegate instance dynamically \tab\tab\tab\tab\tab\tab\tab\tab plugin a delegate.\cf0\par
+\{\par
+for (int i = 0; i < values.Length; i++)\par
+values[i] = t (values[i]);\par
+\}\par
+\}\par
+class Test\par
+\{\par
+static void Main()\par
+\{\par
+int[] values = \{ 1, 2, 3 \};\par
+Util.Transform (values, Square);\tab\tab\tab\cf3  // Dynamically hook in Square\par
+\cf0\f5\fs22\par
+\f3\fs20 foreach (int i in values)\par
+\{\par
+Console.Write (i + " "); // 1 4 9\par
+\}\par
+static int Square (int x) \{ return x * x; \}\par
+\pard\sa200\sl360\slmult1\}\par
+\par
+\par
+\pard\f5\fs27 Multicast Delegates\par
+\par
+\f1\fs19 All delegate instances have \i\f2 multicast \i0\f1 capability. This means that a delegate instance\par
+can reference not just a single target method, but also a list of target methods. The\par
+\f3\fs17 + \f1\fs19 and \f3\fs17 += \f1\fs19 operators combine delegate instances. For example:\par
+\par
+\f3\fs18 SomeDelegate d = SomeMethod1;\par
+\pard\sa200\sl360\slmult1 d += SomeMethod2;\par
+\pard\f5\fs21 Multicast delegate example:-\par
+\par
+\f1\fs19 Suppose you wrote a routine that took a long time to execute. That routine could\par
+regularly report progress to its caller by invoking a delegate. In this example, the\par
+\f3\fs17 HardWork \f1\fs19 routine has a \f3\fs17 ProgressReporter \f1\fs19 delegate parameter, which it invokes to\par
+indicate progress:\par
+\par
+\f3\fs20 public delegate void ProgressReporter (int percentComplete);\par
+public class Util\par
+\{\par
+public static void HardWork (ProgressReporter p)\par
+\{\par
+for (int i = 0; i < 10; i++)\par
+\{\par
+p (i * 10); // Invoke delegate\par
+System.Threading.Thread.Sleep (100); // Simulate hard work\par
+\}\par
+\}\par
+\}\par
+\f1 To monitor progress, the \f3 Main \f1 method creates a multicast delegate instance \f3 p\f1 , such\par
+that progress is monitored by two independent methods:\par
+\f3 class Test\par
+\{\par
+static void Main()\par
+\{\par
+\b ProgressReporter p = WriteProgressToConsole;\par
+p += WriteProgressToFile\b0 ;\tab\tab\tab\tab\b  \cf3\b0 // add two methods to a sincle delegate \tab\tab\tab\tab\tab\tab\tab instance.\f1\fs19 If a multicast delegate has a nonvoid \tab\tab\tab\tab\tab\tab\tab return type, the caller receives the return value \tab\tab\tab\tab\tab\tab\tab only from the last method to be invoked.\f3\fs20\par
+\cf0\tab\par
+\b\par
+\b0 Util.HardWork (p);\par
+\}\par
+static void WriteProgressToConsole (int percentComplete)\par
+\{\par
+Console.WriteLine (percentComplete);\par
+\}\par
+static void WriteProgressToFile (int percentComplete)\par
+\{\par
+System.IO.File.WriteAllText ("progress.txt",\par
+percentComplete.ToString());\par
+\}\par
+\pard\sa200\sl360\slmult1\}\par
+\pard\ul\f0\fs44\par
+\par
+\ulnone\f5\fs28 Generic Delegate Types\par
+\fs27\par
+\f1\fs22 A delegate type may contain generic type parameters. For example:\par
+\par
+\pard\sa200\sl360\slmult1\b\f3 public delegate T Transformer<T> (T arg);\par
+\pard\b0\f5\fs24 The Func and Action Delegates\fs27\par
+\par
+\pard\sl276\slmult1\f1\fs22 With generic delegates, it becomes possible to write a small set of delegate types that\par
+are so general they can work for methods of any return type and any (reasonable)\par
+number of arguments. These delegates are the \f3\fs20 Func \f1\fs22 and \f3\fs20 Action \f1\fs22 delegates, defined in\par
+the \f3\fs20 System \f1\fs22 namespace \par
+:\par
+\f3\fs20 delegate TResult Func <out TResult> ();\par
+delegate TResult Func <in T, out TResult> (T arg);\par
+delegate TResult Func <in T1, in T2, out TResult> (T1 arg1, T2 arg2);\par
+\i\f6 ... and so on, up to T16\par
+\par
+\i0\f3 delegate void Action ();\par
+delegate void Action <in T> (T arg);\par
+delegate void Action <in T1, in T2> (T1 arg1, T2 arg2);\par
+\pard\sa200\sl276\slmult1\i\f6 ... and so on, up to T16\par
+\par
+\i0\f5\fs27 Delegates Versus Interfaces\par
+\pard\f1\fs19 A delegate design may be a better choice than an interface design if one or more of\par
+these conditions are true:\par
+\bullet  The interface defines only a single method.\par
+\bullet  Multicast capability is needed.\par
+\pard\sa200\sl276\slmult1\bullet  The subscriber needs to implement the interface multiple times.\par
+\par
+\par
+\par
+\pard\sa200\sl276\slmult1\qc\cf2\ul\b\f6\fs36 EVENTS\cf0\ulnone\b0\i\fs20\par
+\pard\sa200\sl276\slmult1\par
+\i0\f7\fs19  \cf4 public\cf0   \cf4 delegate\cf0  \cf4 void\cf0  \cf5 edel\cf0 ();\lang1033\f8    \cf3 // Delacre a delegate for the event.\lang9\f7\par
+\cf0     \cf4 public\cf0  \cf4 class\cf0  \cf5 countnums\cf0\par
+    \{\par
+        \cf4 public\cf0  \cf4 event\cf0  \cf5 edel\cf0  edelevent;\lang1033\f8   \cf3 // declare the event.\f9 The keyword \b\f10 event \b0\f9 tells the \tab\tab\tab\tab\tab\tab compiler that an event is being declared\f8  \lang9\f7\par
+\cf0         \cf4 public\cf0   \cf4 void\cf0   printfizz()\lang1033\f8\tab\cf3 //\fs16 These methods will be added to the events. i.e \f11\fs17 An \tab\tab\tab\tab\tab\tab\tab\b event  handler\b0 .\lang9\f7\fs19\par
+\cf0         \{\par
+            \cf5 Console\cf0 .WriteLine(\cf6 "Fizz...."\cf0 );\par
+                \}\par
+         \cf4 public\cf0  \cf4 void\cf0  printbuzz()\lang1033\f8   // \cf3 another \b\f11\fs17 An event handler\b0 .\lang9\f7\fs19\par
+\cf0\par
+        \{\par
+            \cf5 Console\cf0 .WriteLine(\cf6 "buzz...."\cf0 );\par
+        \}\par
+        \cf4 public\cf0  \cf4 void\cf0  oncount()\lang1033\f8  \cf3\fs20 //\f11\fs18 This is called to raise the event.\cf0\lang9\f7\fs19\par
+        \{\par
+            \cf4 if\cf0 (edelevent!= \cf4 null\cf0 )\{\par
+            edelevent();\par
+        \}\par
+        \}\par
+        \}\par
+    \cf4 class\cf0  \cf5 Program\cf0\par
+    \{\par
+        \cf4 static\cf0  \cf4 void\cf0  Main(\cf4 string\cf0 [] args)\par
+        \{\par
+            \cf5 countnums\cf0  theev = \cf4 new\cf0  \cf5 countnums\cf0 ();\par
+            theev.edelevent += theev.printbuzz;\lang1033\f8   \cf3 // register with the event \cf0\lang9\f7\par
+\par
+             theev.edelevent += theev.printfizz;\lang1033\f8  // \cf3 register another event i.e \tab\tab\tab\tab\tab\tab\tab\tab\tab\b\fs20 Multicasting\cf0\lang9\f7\par
+\b0\fs19              \par
+            \cf4 for\cf0  (\cf4 int\cf0  i = 0; i <= 100; i++)\par
+            \{\par
+                \cf4 if\cf0  (i % 5 == 0)\par
+                \{\par
+                    theev.oncount();\lang1033\f8    \cf3 // Call to raise the event\cf0\lang9\f7\par
+                \}\par
+                \cf4 else\cf0\par
+                    \cf5 Console\cf0 .WriteLine(i);\par
+               \par
+            \}\par
+        \}\par
+    \}\par
+\par
+\par
+\cf7\lang1033\ul\b\f8\fs24 A donnet prescribed events pattern \cf0\lang9\ulnone\b0\f7\fs19\par
+\par
+\par
+\cf4 public\cf0  \cf4 class\cf0  \cf5 pricechangedeventargs\cf0  : \cf5 EventArgs\cf0\par
+    \{\par
+        \cf4 public\cf0  \cf4 decimal\cf0  oldprice;\par
+        \cf4 public\cf0  \cf4 decimal\cf0  newprice;\par
+\par
+        \cf4 public\cf0  pricechangedeventargs(\cf4 decimal\cf0  p, \cf4 decimal\cf0  newp)\par
+        \{\par
+            oldprice = p;\par
+            newprice = newp;\par
+\par
+        \}\par
+\par
+    \}\par
+\par
+\par
+\par
+    \cf4 public\cf0  \cf4 class\cf0  \cf5 stocks\cf0\par
+    \{\par
+        \cf4 string\cf0  symbol;\par
+       \cf4 decimal\cf0  price;\par
+\par
+        \cf4 public\cf0  \cf4 event\cf0  \cf5 EventHandler\cf0 <\cf5 pricechangedeventargs\cf0 > pricechanged;\par
+\par
+        \cf4 void\cf0  onpricechange(\cf5 pricechangedeventargs\cf0  e)\par
+        \{\par
+            \cf4 if\cf0  (pricechanged != \cf4 null\cf0 )\par
+                pricechanged(\cf4 this\cf0 , e);\par
+\par
+        \}\par
+\par
+      \cf4 public\cf0   \cf4 decimal\cf0  Price\par
+        \{\par
+            \cf4 get\cf0  \{ \cf4 return\cf0  price; \}\par
+            \cf4 set\cf0\par
+            \{\par
+                \cf4 if\cf0  (price == \cf4 value\cf0 ) \cf4 return\cf0 ;\par
+\par
+                onpricechange(\cf4 new\cf0  \cf5 pricechangedeventargs\cf0 (Price, \cf4 value\cf0 ));\par
+                price = \cf4 value\cf0 ;\par
+            \par
+            \}\par
+\par
+        \par
+        \}\par
+\par
+    \}\par
+\par
+\par
+\cf4 public\cf0  \cf4 class\cf0  \cf5 stockprice\cf0\par
+\{\par
+    \cf4 public\cf0  \cf4 static\cf0  \cf4 void\cf0  changeinprice(\cf4 object\cf0  sender, \cf5 pricechangedeventargs\cf0  e)\par
+\{\par
+    \cf4 if\cf0  (e.oldprice > e.newprice)\par
+    \{\par
+        \cf5 Console\cf0 .WriteLine(\cf6 "Prices decreased"\cf0 );\par
+\par
+    \}\par
+\par
+    \cf4 else\cf0\par
+    \{\par
+        \cf5 Console\cf0 .WriteLine(\cf6 "Prices increased !!"\cf0 );\par
+    \}\par
+\}\par
+\par
+\}\par
+                \cf4 class\cf0  \cf5 Program\cf0\par
+        \{\par
+            \cf4 static\cf0  \cf4 void\cf0  Main(\cf4 string\cf0 [] args)\par
+            \{\par
+                \cf5 stocks\cf0  mystock = \cf4 new\cf0  \cf5 stocks\cf0 ();\par
+               mystock.Price = 55;\par
+\par
+               mystock.pricechanged += \cf5 stockprice\cf0 .changeinprice;\par
+\par
+               mystock.Price = 99;\par
+\par
+            \}\par
+        \}\par
+\par
+\i\f6\fs20\par
+\ul\i0\f0\fs28\par
+}
+ 
