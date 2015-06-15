@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\Atbash\bin\Debug\Atbash.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\Atbash\bin\Debug\Atbash.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\Atbash\obj\x86\Debug\Atbash.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\Atbash\obj\x86\Debug\Atbash.pdb

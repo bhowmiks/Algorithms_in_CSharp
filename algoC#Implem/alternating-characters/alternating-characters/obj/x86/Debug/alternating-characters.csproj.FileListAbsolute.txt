@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\alternating-characters\alternating-characters\bin\Debug\alternating-characters.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\alternating-characters\alternating-characters\bin\Debug\alternating-characters.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\alternating-characters\alternating-characters\obj\x86\Debug\alternating-characters.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\alternating-characters\alternating-characters\obj\x86\Debug\alternating-characters.pdb

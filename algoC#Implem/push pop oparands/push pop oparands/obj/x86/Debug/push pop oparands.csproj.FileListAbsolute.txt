@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\push pop oparands\push pop oparands\bin\Debug\push pop oparands.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\push pop oparands\push pop oparands\bin\Debug\push pop oparands.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\push pop oparands\push pop oparands\obj\x86\Debug\push pop oparands.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\push pop oparands\push pop oparands\obj\x86\Debug\push pop oparands.pdb

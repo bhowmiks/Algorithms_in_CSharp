@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Levenshtein Distance\Levenshtein Distance\bin\Debug\Levenshtein Distance.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Levenshtein Distance\Levenshtein Distance\bin\Debug\Levenshtein Distance.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Levenshtein Distance\Levenshtein Distance\obj\x86\Debug\Levenshtein Distance.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Levenshtein Distance\Levenshtein Distance\obj\x86\Debug\Levenshtein Distance.pdb

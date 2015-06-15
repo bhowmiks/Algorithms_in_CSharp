@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\permutation\permutation\bin\Debug\permutation.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\permutation\permutation\bin\Debug\permutation.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\permutation\permutation\obj\x86\Debug\permutation.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\permutation\permutation\obj\x86\Debug\permutation.pdb

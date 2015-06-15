@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Events\Events\bin\Debug\Events.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Events\Events\bin\Debug\Events.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Events\Events\obj\x86\Debug\Events.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Events\Events\obj\x86\Debug\Events.pdb

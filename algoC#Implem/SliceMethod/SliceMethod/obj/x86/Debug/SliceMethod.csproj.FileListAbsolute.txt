@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\SliceMethod\SliceMethod\bin\Debug\SliceMethod.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\SliceMethod\SliceMethod\bin\Debug\SliceMethod.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\SliceMethod\SliceMethod\obj\x86\Debug\SliceMethod.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\SliceMethod\SliceMethod\obj\x86\Debug\SliceMethod.pdb

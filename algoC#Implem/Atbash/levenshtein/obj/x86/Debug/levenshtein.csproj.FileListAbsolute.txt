@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\levenshtein\bin\Debug\levenshtein.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\levenshtein\bin\Debug\levenshtein.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\levenshtein\obj\x86\Debug\levenshtein.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Atbash\levenshtein\obj\x86\Debug\levenshtein.pdb

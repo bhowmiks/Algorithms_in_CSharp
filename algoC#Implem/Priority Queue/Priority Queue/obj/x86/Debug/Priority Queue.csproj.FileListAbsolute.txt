@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Priority Queue\Priority Queue\bin\Debug\Priority Queue.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Priority Queue\Priority Queue\bin\Debug\Priority Queue.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Priority Queue\Priority Queue\obj\x86\Debug\Priority Queue.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\Priority Queue\Priority Queue\obj\x86\Debug\Priority Queue.pdb

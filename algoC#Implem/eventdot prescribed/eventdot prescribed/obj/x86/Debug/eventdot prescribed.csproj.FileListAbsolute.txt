@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\eventdot prescribed\eventdot prescribed\bin\Debug\eventdot prescribed.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\eventdot prescribed\eventdot prescribed\bin\Debug\eventdot prescribed.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\eventdot prescribed\eventdot prescribed\obj\x86\Debug\eventdot prescribed.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\eventdot prescribed\eventdot prescribed\obj\x86\Debug\eventdot prescribed.pdb

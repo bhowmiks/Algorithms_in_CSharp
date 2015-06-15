@@ -1,0 +1,4 @@
+c:\users\sbhowmik\documents\visual studio 2010\Projects\selection sort\selection sort\bin\Debug\selection sort.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\selection sort\selection sort\bin\Debug\selection sort.pdb
+c:\users\sbhowmik\documents\visual studio 2010\Projects\selection sort\selection sort\obj\x86\Debug\selection sort.exe
+c:\users\sbhowmik\documents\visual studio 2010\Projects\selection sort\selection sort\obj\x86\Debug\selection sort.pdb
